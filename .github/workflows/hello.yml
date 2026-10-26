@@ -21,8 +21,8 @@ jobs:
 
       - name: Look around the machine
         run: |
-        echo "This is a brand-new computer in the cloud"
-        uname -a
-        node --version
-        echo "files in the current folder:"
-        ls -latest
+          echo "This is a brand-new computer in the cloud"
+          uname -a
+          node --version
+          echo "files in the current folder:"
+          ls -latest
