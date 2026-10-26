@@ -25,4 +25,5 @@ jobs:
           uname -a
           node --version
           echo "files in the current folder:"
-          ls -latest
+          ls -la
+          
