@@ -1,0 +1,28 @@
+# Day 1: our very first pipeline.
+# GitHub runs this file every time someone pushes code to the repository.
+
+name: Hello pipeline
+
+on: push
+
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: say hello
+        run: echo "hello from GitHub Actions!"
+      
+      - name: Show facts about this run
+        run: |
+          echo "Repository   ${{ github.repository}}"
+          echo "Branch:      ${{ github.ref_name}}"
+          echo "Repushed by: ${{ github.actor}}"
+
+      - name: Look around the machine
+        run: |
+        echo "This is a brand-new computer in the cloud"
+        uname -a
+        node --version
+        echo "files in the current folder:"
+        ls -latest
