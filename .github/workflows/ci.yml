@@ -1,0 +1,64 @@
+# Day 2.0: Continuous Integration (CI) on pull requests.
+# For every pull request into main: get the code, install, run the tests,
+# once for the backend and once for the frontend.
+
+
+name: CI
+
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+
+
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v5
+
+
+      - name: Install Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+
+      - name: Install packages
+        working-directory: backend
+        run: npm ci
+
+
+      - name: Run the tests
+        working-directory: backend
+        run: npm test
+
+
+  frontend:
+    runs-on: ubuntu-latest
+
+
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v5
+
+
+      - name: Install Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+
+      - name: Install packages
+        working-directory: frontend
+        run: npm ci
+
+
+      - name: Run the tests
+        working-directory: frontend
+        run: npm test
